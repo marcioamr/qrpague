@@ -8,6 +8,6 @@ A proposta é de que com a criação de um padrão único, os usuários de mobil
 
 Atualmente cada instituição financeira tem desenvolvido iniciativas para a realização de operações bancárias via código QR em seus aplicativos móveis. De forma isolada, suas inciativas se restrigem aos seus correntistas. A partir da adoção do padrão proposto por este projeto as instituições poderão utilizar os benefícios da tecnologia de código QR para agilizar a realização de DOCs, TEDs e transferências bancárias.
 
-## Bancos Participantes
+## Instituições Participantes
 
 * [Sicoob](http://www.sicoob.com.br)
