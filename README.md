@@ -13,9 +13,12 @@ Atualmente cada instituição financeira tem desenvolvido iniciativas para a rea
 * [Sicoob](http://www.sicoob.com.br)
 
 ## Documentação
- version;id;label;valor;moeda;cpfOrigem;numBanco;nome;ag;conta;cpfDestino;metadados;timestampCriação;timestampExpiração;assinaturaECDSA
 
+O TOKEN QrPague, é posicional e separado por um delimitador ';', conforme abaixo:
 
+`
+version;id;label;valor;moeda;cpfOrigem;numBanco;nome;ag;conta;cpfDestino;metadados;timestampCriacao;timestampExpiracao;assinaturaECDSA"
+`
 | Ordem | Obrigatório |        Campo       |                                          Descrição                                          |
 |:-----:|:-----------:|:------------------:|:-------------------------------------------------------------------------------------------:|
 |   0   |      *      |       versao       | Versão do TOKEN QrPague.                                                                    |
@@ -30,5 +33,45 @@ Atualmente cada instituição financeira tem desenvolvido iniciativas para a rea
 |   9   |      *      |        conta       | Número da Conta de quem gerou e vai receber o aporte.                                       |
 |   10  |             |     cpfDestino     | CPF de Destino| se o usuário fizer a escolha de filtrar quem deve ser o pagador do QrPague. |
 |   11  |             |      metadados     | Qualquer metadados de livre escolha de cada Instiuição Financeira.                          |
-|   12  |      *      |  timestampCriação  | Timestamp da data de criação do TOKEN QRPague.                                              |
-|   13  |             | timestampExpiração | Timestamp da data de expiração do TOKEN QRPague.                                            |
+|   12  |      *      |  timestampCriacao  | Timestamp da data de criação do TOKEN QRPague.                                              |
+|   13  |             | timestampExpiracao | Timestamp da data de expiração do TOKEN QRPague.                                            |
+|   14  |      *      |   assinaturaECDSA  | Hash(ECDSA) da assinatura efetuada pela Instiuição Financeira, na criação do TOKEN QrPague. |
+
+#### Exemplo prático
+```js
+let qrPagueToken = "0.1.0;5afad42239ee9f000fe92189;;10;BRL;99999999999;756;Fulano de Tal;0001;700000001;;;1526387746083;;3046022100c1bf3a2fd92766e82022cf5202a2d7520dead8a432b048b7d5f3e8cf78247f4f022100a34b2b6dc6622daf981566f45eb40c756abb8c4026ce98ce0c3fa78e1c942766"
+
+let qrPagueArray = qrPagueToken.split(';')
+console.log(qrPagueArray)
+```
+#### Saída do console
+```
+[
+  "0.1.0",
+  "5afad42239ee9f000fe92189",
+  "",
+  "10",
+  "BRL",
+  "99999999999",
+  "756",
+  "Fulano de Tal",
+  "0001",
+  "700000001",
+  "",
+  "",
+  "1526387746083",
+  "",
+  "3046022100c1bf3a2fd92766e82022cf5202a2d7520dead8a432b048b7d5f3e8cf78247f4f022100a34b2b6dc6622daf981566f45eb40c756abb8c4026ce98ce0c3fa78e1c942766"
+]
+```
+
+Como observado, campos não obrigatórios são representados por um characeter vazio na string do TOKEN QrPague, ou seja, será cocatenado ';;'.
+
+
+## Assinatura
+O último campo que representa a assinatura, é um HASH assinado com a chave privada da Instiutição Financeira, que deve ser respeitado o algorítimo de curva elíptica ECDSA.
+>https://pt.wikipedia.org/wiki/ECDSA
+
+Essa assinatura, deve ser validada com a chave pública da Instituição Financeira pagadora do QrPague. Dessa forma, as IFs participantes do deste modelo, devem compartilhar e manter atualizado sua chave pública(ECDSA).
+
+A estratégia de usar chave de Curva Elíptica, se deu com a finalidade de diminuir a densidade do qrcode(QrPague), para evitar dificuldades de leituras por parte de alguns smatphones mais antigos.
