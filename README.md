@@ -79,17 +79,20 @@ A estratégia de usar chave de Curva Elíptica, se deu com a finalidade de dimin
 Exemplos Javascript:
 ##### Assinar 
 ```js
-let crypto = require('crypto')
-let qrPagueToken = "0.1.0;5afad42239ee9f000fe92189;;10;BRL;99999999999;756;Fulano de Tal;0001;700000001;;;1526387746083;"
-let privateKey = fs.readFileSync('/path/to/key/private.key').toString('utf-8');
-let password = fs.readFileSync('/path/to/key/passord').toString('utf-8');
-let sign = crypto.createSign('SHA256');
-sign.write(token);
-sign.end();
-let decipher = crypto.createDecipher('aes256', passwd);
-let decPrivKey = decipher.update(prvK, 'hex', 'utf8');
-let pemPrivateKey = keyEncoder.encodePrivate(decPrivKey, 'raw', 'pem');
-let signature = sign.sign(pemPrivateKey, 'hex');
-qrPagueToken += ";" + signature;
-return qrPagueToken;
+function assinar(qrPagueToken){// "0.1.0;5afad42239ee9f000fe92189;;10;BRL;99999999999;756;Fulano de Tal;0001;700000001;;;1526387746083;"
+  
+  let crypto = require('crypto')
+  let privateKey = fs.readFileSync('/path/to/key/private.key').toString('utf-8');
+  let password = fs.readFileSync('/path/to/key/passord').toString('utf-8');
+  let sign = crypto.createSign('SHA256');
+  sign.write(token);
+  sign.end();
+  let decipher = crypto.createDecipher('aes256', passwd);
+  let decPrivKey = decipher.update(prvK, 'hex', 'utf8');
+  let pemPrivateKey = keyEncoder.encodePrivate(decPrivKey, 'raw', 'pem');
+  let signature = sign.sign(pemPrivateKey, 'hex');
+  qrPagueToken += ";" + signature;
+  return qrPagueToken;
+
+}
 ```
