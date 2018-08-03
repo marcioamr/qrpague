@@ -15,10 +15,10 @@ Atualmente cada instituição financeira tem desenvolvido iniciativas para a rea
 ## Documentação
 
 O TOKEN QrPague, é posicional e separado por um delimitador ';', conforme abaixo:
+`
+version;id;label;valor;moeda;cpfOrigem;numBanco;nome;ag;conta;cpfDestino;metadados;timestampCriacao;timestampExpiracao;assinaturaECDSA
+`
 
-`
-version;id;label;valor;moeda;cpfOrigem;numBanco;nome;ag;conta;cpfDestino;metadados;timestampCriacao;timestampExpiracao;assinaturaECDSA"
-`
 | Ordem | Obrigatório |        Campo       |                                          Descrição                                          |
 |:-----:|:-----------:|:------------------:|:-------------------------------------------------------------------------------------------:|
 |   0   |      *      |       versao       | Versão do TOKEN QrPague.                                                                    |
@@ -33,9 +33,9 @@ version;id;label;valor;moeda;cpfOrigem;numBanco;nome;ag;conta;cpfDestino;metadad
 |   9   |      *      |        conta       | Número da Conta de quem gerou e vai receber o aporte.                                       |
 |   10  |             |     cpfDestino     | CPF de Destino| se o usuário fizer a escolha de filtrar quem deve ser o pagador do QrPague. |
 |   11  |             |      metadados     | Qualquer metadados de livre escolha de cada Instiuição Financeira.                          |
-|   12  |      *      |  timestampCriacao  | Timestamp da data de criação do TOKEN QRPague.                                              |
-|   13  |             | timestampExpiracao | Timestamp da data de expiração do TOKEN QRPague.                                            |
-|   14  |      *      |   assinaturaECDSA  | Hash(ECDSA) da assinatura efetuada pela Instiuição Financeira, na criação do TOKEN QrPague. |
+|   12  |      *      |  timestampCriação  | Timestamp da data de criação do TOKEN QRPague.                                              |
+|   13  |             | timestampExpiração | Timestamp da data de expiração do TOKEN QRPague.                                            |
+| 14    |      *      |   assinaturaECDSA  | Hash(ECDSA) da assinatura efetuada pela Instiuição Financeira, na criação do TOKEN QrPague. |
 
 #### Exemplo prático
 ```js
