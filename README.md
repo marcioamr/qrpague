@@ -13,6 +13,8 @@ Atualmente cada instituição financeira tem desenvolvido iniciativas para a rea
 * [Sicoob](http://www.sicoob.com.br)
 
 ## Documentação
+ version;id;label;valor;moeda;cpfOrigem;numBanco;nome;ag;conta;cpfDestino;metadados;timestampCriação;timestampExpiração;assinaturaECDSA
+
 
 | Ordem | Obrigatório |        Campo       |                                          Descrição                                          |
 |:-----:|:-----------:|:------------------:|:-------------------------------------------------------------------------------------------:|
