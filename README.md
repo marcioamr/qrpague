@@ -76,9 +76,13 @@ Essa assinatura, deve ser validada com a chave pública da Instituição Finance
 
 A estratégia de usar chave de Curva Elíptica, se deu com a finalidade de diminuir a densidade do qrcode(QrPague), para evitar dificuldades de leituras por parte de alguns smatphones mais antigos.
 
-Exemplos Javascript:
+#### Exemplos NODEJS:
+
 ##### Assinar 
 ```js
+let crypto = require('crypto')
+let crypto = require('fs')
+
 function assinar(qrPagueToken){// "0.1.0;5afad42239ee9f000fe92189;;10;BRL;99999999999;756;Fulano de Tal;0001;700000001;;;1526387746083;"
   
   let crypto = require('crypto')
@@ -96,3 +100,23 @@ function assinar(qrPagueToken){// "0.1.0;5afad42239ee9f000fe92189;;10;BRL;999999
 
 }
 ```
+
+##### Validar
+```js
+let crypto = require('crypto')
+
+function validarAssinatura(pubKey, signature, token){
+    let payload = token.slice(0, token.length - 1).join(";");
+    pubKey = keyEncoder.encodePublic(pubKey, 'raw', 'pem');
+    let verify = crypto.createVerify('SHA256');
+
+    verify.write(payload);
+    verify.end();
+
+    if (!verify.verify(pubKey, signature, 'hex'))
+        throw new Error("Could not validate token signature");
+    return true
+}
+```
+
+
