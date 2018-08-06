@@ -120,3 +120,6 @@ function validarAssinatura(pubKey, signature, token){
 ```
 
 
+## Conclusão
+  Como falado anteriormente, QrPague é um token posicional que representa um QRCode assinado pela Insitituição Financeira de origem. Dessa forma a Insituição pagadora deve identificar a IF de Origem a partir no campo de número 6(numBanco), com isso buscar em sua base local a chave pública da insituição de origem a fim de validade a autenticidade do TOKEN e depois disso, extrair os dados para realizar a transação bancária(TEd ou DOC).
+
