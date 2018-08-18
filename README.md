@@ -16,7 +16,9 @@ Atualmente cada instituição financeira tem desenvolvido iniciativas para a rea
 
 Para que a experiência esperada para os seus usuários seja alçada, além do padrão do código QR é necessário padronizar um MIME Type e um JSON com as informações complementares da operação.
 
-![alt text](https://github.com/marcioamr/qrpague/blob/master/imagens/QRPague.png?raw=true)
+<p align="center">
+  <img src="https://github.com/marcioamr/qrpague/blob/master/imagens/QRPague.png?raw=true">
+</p>
 
 ### MIME Type
 
