@@ -1,6 +1,6 @@
 # Projeto QRPague
 
-Projeto para a padronização de código QR para permitir a agilidade na transferência de recursos financeiros via mobile banking entre correntistas de diferentes instituições financeiras brasileiras.
+Projeto de padronização de código QR para a realização de transferência de recursos financeiros via mobile banking entre correntistas de diferentes instituições financeiras brasileiras.
 
 A proposta é de que com a criação de um padrão único, os usuários de mobile banking dos bancos participantes do projeto possam a partir de seu mobile baking ler o código QR do outro banco e realizar de forma ágil e segura um DOC, TED ou mesmo uma transferência bancária.
 
@@ -12,7 +12,17 @@ Atualmente cada instituição financeira tem desenvolvido iniciativas para a rea
 
 * [Sicoob](http://www.sicoob.com.br)
 
-## Documentação
+## Padronização
+
+Para que a experiência esperada para os seus usuários seja alçada, além do padrão do código QR é necessário padronizar um MIME Type e um JSON com as informações complementares da operação.
+
+### MIME Type
+
+Para que seja possível gerar um código QRPague e compartilhá-lo em forma de link seja por e-mail, em redes sociais ou mesmo por WhatsApp é necessário que seja convensionado um formato de arquivo único entre as instituições.
+
+Todos os aplicativos das instituições devem registrar o MIME Type *application/qrpague* em seus mobile banking de forma que ao clicar em um link que contenha um token QRPague o usuário seja perguntado em qual mobile banking que ele possui instalado ele gostaria de realizar a operação.
+
+### Código QR
 
 O TOKEN QrPague, é posicional e separado por um delimitador ';', conforme abaixo:
 `
