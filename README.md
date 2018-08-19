@@ -34,4 +34,4 @@ Um exemplo de como assinar e validar um código QR utilizando a tecnologia NodeJ
 
 ### Detalhamento da transação
 
-Opcionalmente uma URL de detalhamento da transação pode ser informada para permitir uma experiência mais agrável para os clientes do sistema financeiro. Esse detalhamento é realizado por meio de um JSON emitido pela instituição financeira e está documentando em ??.
+Opcionalmente uma URL de detalhamento da transação pode ser informada para permitir uma experiência mais agrável para os clientes do sistema financeiro. Esse detalhamento é realizado por meio de um JSON emitido pela instituição financeira e está documentando em [https://github.com/marcioamr/qrpague/wiki/Detalhamento-da-transa%C3%A7%C3%A3o](https://github.com/marcioamr/qrpague/wiki/Detalhamento-da-transa%C3%A7%C3%A3o).
