@@ -28,4 +28,6 @@ Todos os aplicativos das instituições devem registrar o MIME Type *application
 
 ### Código QR
 
-O código QR é gerado pelas instituições financeiras em formato texto plano com campos separados por ";" e devidamente assinados por certificado digital. O detalhamento do código QR está disponível em [https://github.com/marcioamr/qrpague/wiki](https://github.com/marcioamr/qrpague/wiki)
+O código QR é gerado pelas instituições financeiras em formato texto plano com campos separados por ";" e devidamente assinados por certificado digital. O detalhamento do código QR está disponível em [https://github.com/marcioamr/qrpague/wiki](https://github.com/marcioamr/qrpague/wiki). 
+
+Um exemplo de como assinar e validar um código QR utilizando a tecnologia NodeJs pode ser vista acessando [aqui](https://github.com/marcioamr/qrpague/wiki/Exemplo-de-assinatura-e-valida%C3%A7%C3%A3o-de-token).
