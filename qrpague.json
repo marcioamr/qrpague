@@ -1,19 +1,21 @@
 {
-    "transactionid": "d41d8cd98f00b204e9800998ecf8427e",
-    "valor": 100.25,
-    "destinatario": {
-      "nome": "Fulano de Tal",
-      "cpfcnpj": "12345678998",
-      "numbanco": 1,
-      "agencia":1234,
-      "numconta": "12345678912",
-      "tipoconta": "cco",
-      "imgthumb": "http://dominio/img.jpg"
-    },
-    "itens": {
-      {"nome": "Produto 1", "qtd":1, "valorunitario": 12.23, "desconto": 0, "imgthumb":"http://dominio/img1.jpg"},
-      {"nome": "Produto 2", "qtd":2, "valorunitario": 243.23, "desconto": 50.00, "imgthumb":"http://dominio/img2.jpg"},
-      {"nome": "Produto 3", "qtd":1, "valorunitario": 119.21, "desconto": 0, "imgthumb":"http://dominio/img3.jpg"}
+    "transaction": {
+        "transactionid": "d41d8cd98f00b204e9800998ecf8427e",
+        "valor": 100.25,
+        "destinatario": {
+          "nome": "Fulano de Tal",
+          "cpfcnpj": "12345678998",
+          "numbanco": 1,
+          "agencia":1234,
+          "numconta": "12345678912",
+          "tipoconta": "cco",
+          "imgthumb": "http://dominio/img.jpg"
+        },
+        "itens": {
+          {"nome": "Produto 1", "qtd":1, "valorunitario": 12.23, "desconto": 0, "imgthumb":"http://dominio/img1.jpg"},
+          {"nome": "Produto 2", "qtd":2, "valorunitario": 243.23, "desconto": 50.00, "imgthumb":"http://dominio/img2.jpg"},
+          {"nome": "Produto 3", "qtd":1, "valorunitario": 119.21, "desconto": 0, "imgthumb":"http://dominio/img3.jpg"}
+        }
     },
     "assinatura": "3046022100c1bf3a2fd92766e82022cf5202a2d7520dead8a432b048b7d5f3e8cf78247f4f022100a34b2b6dc6622daf981566f45eb40c756abb8c4026ce98ce0c3fa78e1c942766"
 }
