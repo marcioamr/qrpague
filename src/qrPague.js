@@ -11,38 +11,35 @@ async function createQRCode(qrPaguePayload) {
 
 function create(qrPaguePayload) {
 
-    let qrPagueToken = {
-        payload: compress(qrPaguePayload)
-    };
+    const signature = sign(qrPaguePayload);
 
-    qrPagueToken.signature = sign(qrPagueToken)
-
-    return qrPagueToken
+    return compress(`${qrPaguePayload};${signature}`)
 }
 
 
 function read(qrPague) {
 
-    if (!verify(qrPague))
+    let uncompressed = uncompress(qrPague)
+
+    if (!verify(uncompressed))
         throw new ValidationException("The Signature Dont Match", 500);
 
-    return uncompress(qrPague.payload);
+    return getPayload(uncompressed);
 }
 
 
-function sign(qrPague) {
+function sign(payload) {
 
     let signer = crypto.createSign('SHA256');
-    signer.update(new Buffer(qrPague.payload));
+    signer.update(new Buffer(payload));
     signer.end();
     return signer.sign(global.privateKey, 'base64')
 }
 
 function verify(qrPague) {
-
     var verifier = crypto.createVerify('SHA256');
-    verifier.update(new Buffer(qrPague.payload));
-    return verifier.verify(global.publicKey, qrPague.signature, 'base64');
+    verifier.update(new Buffer(getPayload(qrPague)));
+    return verifier.verify(global.publicKey, getSignature(qrPague), 'base64');
 }
 
 function compress(qrPaguePayload) {
@@ -53,6 +50,14 @@ function uncompress(qrPaguePayload) {
     return lzw.decode(qrPaguePayload)
 }
 
+function getPayload(qrPague){
+    var index = qrPague.lastIndexOf(";");
+    return qrPague.substr(0, index);
+} 
+function getSignature(qrPague){
+    var index = qrPague.lastIndexOf(";");
+    return qrPague.substr(index + 1);
+}
 module.exports = {
     create,
     createQRCode,
