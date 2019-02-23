@@ -1,0 +1,31 @@
+{
+  "name": "qrpague",
+  "version": "1.0.0",
+  "description": "Projeto para a padronização de código QR entre as instituições financeiras brasileiras para permitir a agilidade na transferência de recursos financeiros via mobile banking independentemente de onde os envolvidos possuam conta bancária.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodolfoleal/qrpague.git"
+  },
+  "keywords": [
+    "qrcode",
+    "qrpague"
+  ],
+  "author": "Rodolfo Leal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodolfoleal/qrpague/issues"
+  },
+  "homepage": "https://github.com/rodolfoleal/qrpague#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "jest": "^24.1.0"
+  },
+  "dependencies": {
+    "node-lzw": "^0.3.1",
+    "qrcode": "^1.3.3"
+  }
+}
