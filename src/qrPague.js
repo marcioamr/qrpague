@@ -1,4 +1,4 @@
-const crypto = require('crypto')
+const crypto = require('crypto');
 const lzw = require("node-lzw");
 const qrcode = require('qrcode');
 ValidationException = require('./qrPagueExceptions');
@@ -11,7 +11,7 @@ async function createQRCode(qrPaguePayload) {
 
 function create(qrPaguePayload) {
 
-    const signature = sign(qrPaguePayload);
+    const signature = sign(generateHash(qrPaguePayload));
 
     return compress(`${qrPaguePayload};${signature}`)
 }
@@ -37,8 +37,8 @@ function sign(payload) {
 }
 
 function verify(qrPague) {
-    var verifier = crypto.createVerify('SHA256');
-    verifier.update(new Buffer(getPayload(qrPague)));
+    let verifier = crypto.createVerify('SHA256');
+    verifier.update(new Buffer(getPayloadHash(qrPague)));
     return verifier.verify(global.publicKey, getSignature(qrPague), 'base64');
 }
 
@@ -54,9 +54,20 @@ function getPayload(qrPague){
     var index = qrPague.lastIndexOf(";");
     return qrPague.substr(0, index);
 } 
+
+function getPayloadHash(qrPague){
+    var index = qrPague.lastIndexOf(";");
+    return generateHash(qrPague.substr(0, index));
+} 
 function getSignature(qrPague){
     var index = qrPague.lastIndexOf(";");
     return qrPague.substr(index + 1);
+}
+
+function generateHash(content){
+    const hash = crypto.createHash('sha256');
+    hash.update(content);
+    return hash.digest('hex');
 }
 module.exports = {
     create,
